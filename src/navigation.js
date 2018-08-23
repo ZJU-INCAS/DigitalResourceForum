@@ -12,6 +12,7 @@ class Sider extends React.Component {
 
   handleClick = (e) => {
     switch(e.key){
+      case '0':this.props.history.push('/');break;
       case '1':this.props.history.push('/account');break;
       case '2':this.props.history.push('/recharge');break;
       case '3':this.props.history.push('/withdraw');break;

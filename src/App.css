@@ -48,15 +48,20 @@
 
 }
 
-#mainPageImg{
-  background-image: url('/images/bg-masthead.jpg');
-  width: 80%;
-  height: 100%;
+#mainPage{
+  display: flex;
+  justify-content: space-around;
+  width:100%;
 }
+#indexPage{
+  width:100%;
+  margin-top: -5rem;
+}
+
 #mainPageTitle{
-    color: white;
-    padding-top: 20rem;
-    letter-spacing: 0.3rem;
-    font-size: 3rem;
-    font-family: 微软雅黑;
+  position: relative;
+  z-index: 1000;
+  top: 15rem;
+  color: white;
+  font-size:3rem;
 }
