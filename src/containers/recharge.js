@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Form, Input, Button } from 'antd';
+import * as Utility from '../utilities/utility';
+import { Form, Input,InputNumber, Button } from 'antd';
 
 const FormItem = Form.Item;
 class RegistrationForm extends React.Component {
@@ -10,9 +11,17 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        const {balance} = values;
+        const userId = localStorage.getItem("userId");
+        const response = await Utility.recharge(userId,balance);
+        if(response.status===200){
+          alert("充值成功");
+        }else{
+          alert("充值失败");
+        }
       }
     });
   }
@@ -59,7 +68,7 @@ class RegistrationForm extends React.Component {
               required: true, message: '请输入要充值的金额!',
             }],
           })(
-            <Input />
+            <InputNumber />
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

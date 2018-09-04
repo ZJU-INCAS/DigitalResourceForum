@@ -7,7 +7,7 @@ export default class extends React.Component {
         return <div id="indexPage">
             <div id="mainPageTitle">浙江大学数字教育资源系统</div>
 
-            <img style={{width:"70%",marginBottom:"3rem",position:"relative",zIndex:2}}src="/images/bg-masthead.jpg"/>
+            <img style={{width:"60rem",height:"25rem",marginBottom:"3rem",position:"relative",zIndex:2}}src="/images/bg-masthead.jpg"/>
             <div id="mainPage">
 
             <Card

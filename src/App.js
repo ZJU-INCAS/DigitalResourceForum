@@ -8,17 +8,21 @@ import {
   Switch
 } from 'react-router-dom';
 import './App.css';
-import Recharge from './recharge';
-import Navigator from './navigation';
-import Header from './header'
-import Issue from './issue';
-import Account from './account';
-import Transfer from './transfer';
-import Withdraw from './withdraw';
-import List from './list';
-import Manage from './manage';
-import Index from './mainPage';
+import Recharge from './containers/recharge';
+import Navigator from './components/navigation';
+import Header from './components/header'
+import Issue from './containers/issue';
+import Account from './containers/account';
+import Transfer from './components/transfer';
+import Withdraw from './containers/withdraw';
+import List from './components/list';
+import Manage from './containers/manage';
+import Index from './containers/mainPage';
 class App extends Component {
+  componentDidMount(){
+    //测试用用户名
+    localStorage.setItem("userId","test1@qq.com");
+  }
   render() {
     return (
   
