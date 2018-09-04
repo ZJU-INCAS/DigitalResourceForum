@@ -36,12 +36,12 @@ class RegistrationForm extends React.Component {
     const { autoCompleteResult } = this.state;
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
+        xs: { span: 12 },
+        sm: { span: 30 },
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
+        xs: { span: 12 },
+        sm: { span: 30 },
       },
     };
     const tailFormItemLayout = {
@@ -68,7 +68,7 @@ class RegistrationForm extends React.Component {
               required: true, message: '请输入要充值的金额!',
             }],
           })(
-            <InputNumber />
+            <InputNumber  />
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>

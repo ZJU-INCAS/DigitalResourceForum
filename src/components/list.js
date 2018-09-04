@@ -20,6 +20,9 @@ const IconText = ({ type, text }) => (
 );
 
 export default class extends React.Component {
+    async buy(item){
+
+    }
     render() {
         return <div className="demandList"><List
             itemLayout="vertical"
@@ -30,20 +33,22 @@ export default class extends React.Component {
                 },
                 pageSize: 10,
             }}
-            dataSource={listData}
+            dataSource={this.props.data}
             footer={<div><b>ant design</b> footer part</div>}
             renderItem={item => (
                 <List.Item
                     key={item.title}
-                    actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                    extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+                    actions={[<a onClick={this.buy.bind(this,item)}>购买</a>,<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                    extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" 
+                
+                    />}
                 >
                     <List.Item.Meta
                         avatar={<Avatar src={item.avatar} />}
-                        title={<a href={item.href}>{item.title}</a>}
-                        description={item.description}
+                        title={<div>{item.serviceName}</div>}
+                        description={<div><div>课程提供:{item.serviceProvider}</div><div>价格:{item.servicePrice}</div></div>}
                     />
-                    {item.content}
+                    {item.serviceID}
                 </List.Item>
             )}
         /></div>;

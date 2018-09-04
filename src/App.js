@@ -18,6 +18,9 @@ import Withdraw from './containers/withdraw';
 import List from './components/list';
 import Manage from './containers/manage';
 import Index from './containers/mainPage';
+import Check from './containers/check';
+import Resource from './containers/resource';
+import MyResource from './containers/myresource'
 class App extends Component {
   componentDidMount(){
     //测试用用户名
@@ -40,6 +43,9 @@ class App extends Component {
                    <Route path='/withdraw' component={Withdraw} />
                    <Route path='/list' component={List} />
                    <Route path='/manage' component={Manage} />
+                   <Route path='/check' component={Check} />
+                   <Route path='/resource' component={Resource} />
+                   <Route path='/myresource' component={MyResource} />
                  </div>
             </div>
           </div>

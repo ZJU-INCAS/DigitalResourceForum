@@ -20,6 +20,9 @@ class Sider extends React.Component {
       case '5':this.props.history.push('/list');break;
       case '6':this.props.history.push('/issue');break;
       case '7':this.props.history.push('/manage');break;
+      case '8':this.props.history.push('/check');break;
+      case '10':this.props.history.push('/resource');break;
+      case '11':this.props.history.push('/myresource');break;
     }
     this.setState({
       current: e.key,
@@ -44,10 +47,13 @@ class Sider extends React.Component {
             <Menu.Item key="3">提现</Menu.Item>
             <Menu.Item key="4">转账</Menu.Item>
           </SubMenu>
+            <Menu.Item key="10">资源列表</Menu.Item>
+            <Menu.Item key="11">我的资源</Menu.Item>
             <Menu.Item key="5">需求列表</Menu.Item>
             <Menu.Item key="6">发布需求</Menu.Item>
             <Menu.Item key="7">管理需求</Menu.Item>
-            <Menu.Item key="8">注销</Menu.Item>
+            <Menu.Item key="8">审核</Menu.Item>
+            <Menu.Item key="9">注销</Menu.Item>
         </Menu>
       </div>
     );
