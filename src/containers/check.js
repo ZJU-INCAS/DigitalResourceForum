@@ -14,12 +14,18 @@ export default class extends React.Component{
         const response = await Utility.checkRecharge(item.tokenRechargeID,'accept');
         if(response.status===200){
             alert("审核通过");
+            const data = await Utility.getRechargeCheckList();
+            console.log(data);
+            this.setState({data:data});
         }
     }
     async reject(item){
         const response = await Utility.checkRecharge(item.tokenRechargeID,'reject');
         if(response.status===200){
             alert("拒绝成功");
+            const data = await Utility.getRechargeCheckList();
+            console.log(data);
+            this.setState({data:data});
         }
     }
     render(){
@@ -31,7 +37,7 @@ export default class extends React.Component{
             <List.Item.Meta
               avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
               title={<div>{item.user}</div>}
-              description={<div><div>交易ID:{item.tokenRechargeID}</div><div>充值金额:{item.TokenNum}</div></div>}
+              description={<div><div>交易ID:{item.tokenRechargeID}</div><div>充值金额:{item.tokenNum}</div></div>}
              
             />
           </List.Item>

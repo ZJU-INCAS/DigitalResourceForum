@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { List, Avatar, Icon } from 'antd';
-
+import * as Utility from '../utilities/utility';
 const listData = [];
 for (let i = 0; i < 23; i++) {
     listData.push({
@@ -21,7 +21,13 @@ const IconText = ({ type, text }) => (
 
 export default class extends React.Component {
     async buy(item){
-
+        const userId = localStorage.getItem("userId");
+        const response = await Utility.consumeItem(userId,item.serviceID)
+        if(response.status===200){
+            alert("购买成功");
+        }else{
+            alert("购买失败");
+        }
     }
     render() {
         return <div className="demandList"><List

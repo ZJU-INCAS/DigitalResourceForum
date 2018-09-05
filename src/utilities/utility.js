@@ -11,22 +11,23 @@ export async function recharge(userId, balance) {
     const url = `http://111.231.120.224:3040/api/UserRecharge`;
     const body = JSON.stringify({
         "$class": "token.UserRecharge",
-        "TokenNum": balance,
-        "rechargeID": "testrecharge#1",
-        "user": `resource:token.User#${userId}`
+        "tokenNum": balance,
+        "rechargeID": "rid"+Date.now().toString(),
+        "user": userId
     });
     const response = await myFetch(url, { method: "POST", body })
     return response;
 }
 
 export async function getRechargeCheckList(){
-    const url = `http://111.231.120.224:3040/api/CheckTokenRecharge`;
+    const filter = JSON.stringify({"where":{"confirmBank": "N"}})
+    const url = `http://111.231.120.224:3040/api/UserTokenRecharge?filter=${filter}`;
     const response = await myFetch(url);
     return await response.json();
 }
 
 export async function checkRecharge(id,opt){
-    const url = `http://111.231.120.224:3040/api/checkUserRecharge`;
+    const url = opt==='accept'?`http://111.231.120.224:3040/api/checkUserRecharge`:'http://111.231.120.224:3040/api/RejectUserRecharge';
     const body = JSON.stringify({
         rechargeID:id
     });
@@ -42,21 +43,20 @@ export async function getResources(){
 
 
 export async function getMyResources(userId){
-    const url = `http://111.231.120.224:3040/api/UserConsumeService?filter={"where":"user":"${userId}"}}
-    `
+    const filter = JSON.stringify({"where":{"user":`resource:token.User%23${userId}`}});
+    console.log(filter);
+    const url = `http://111.231.120.224:3040/api/UserConsumeService?filter=${filter}`
+    console.log(url);
     const response = await myFetch(url);
     return await response.json();
 }
 
 export async function consumeItem(userId,itemId){
     const url ='http://111.231.120.224:3040/api/UserConsumeService';
-    const body = JSON.stringify({ 
-        "$class": "token.UserConsumeService",  
-        "serviceID": "resource:token.Service#service2%40mooc",  
-        "contractID": "resource:token.Contract#contract%40mooc", 
-        "user": "resource:token.User#user2%40email.com",  
-        "company": "resource:token.Company#mooc%40email.com", 
-        "bank": "resource:token.CentralBank#centralbank%40email.com" 
+    const body = JSON.stringify({  
+        "serviceID": `resource:token.Service#${itemId}`,  
+        "user": `resource:token.User#${userId}`,  
       })
       const response = await myFetch(url,{method:"POST",body});
+      return response;
 }
