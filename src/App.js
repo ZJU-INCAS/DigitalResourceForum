@@ -22,7 +22,7 @@ import Check from './containers/check';
 import Resource from './containers/resource';
 import MyResource from './containers/myresource';
 import Users from './containers/users';
-class App extends Component {
+export default class App extends Component {
   componentDidMount(){
     //测试用用户名
     localStorage.setItem("userId","test1@qq.com");
@@ -61,4 +61,3 @@ class App extends Component {
   }
 }
 
-export default App;
