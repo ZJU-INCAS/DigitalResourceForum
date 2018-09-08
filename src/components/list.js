@@ -40,12 +40,11 @@ export default class extends React.Component {
                 pageSize: 10,
             }}
             dataSource={this.props.data}
-            footer={<div><b>ant design</b> footer part</div>}
             renderItem={item => (
                 <List.Item
                     key={item.title}
-                    actions={[<a onClick={this.buy.bind(this,item)}>购买</a>,<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-                    extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" 
+                    actions={this.props.mode!=='res'?null:[<a onClick={this.buy.bind(this,item)}>购买</a>,<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                    extra={this.props.mode==='noimg'?null:<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" 
                 
                     />}
                 >

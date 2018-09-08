@@ -9,6 +9,6 @@ export default class extends React.Component{
         this.setState({data:data});
     }
     render(){
-        return <List data={this.state.data}/>;
+        return <List data={this.state.data} mode="res"/>;
     }
 }

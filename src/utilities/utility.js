@@ -1,5 +1,12 @@
 import myFetch from './fetchUtility';
 
+export async function getUsers(){
+    const url = `http://111.231.120.224:3040/api/User`;
+    const response = await myFetch(url);
+    const userInfo = await response.json();
+    return userInfo;
+}
+
 export async function getUserInfo(userId) {
     const url = `http://111.231.120.224:3040/api/User/${userId}`;
     const response = await myFetch(url);
@@ -26,6 +33,18 @@ export async function getRechargeCheckList(){
     return await response.json();
 }
 
+export async function getAcceptedReqs(){
+    const url = 'http://111.231.120.224:3040/api/queries/GetUserTokenRechargeY';
+    const response = await myFetch(url);
+    return await response.json();
+}
+
+export async function getRejectedReqs(){
+    const url = 'http://111.231.120.224:3040/api/queries/GetUserTokenRechargeR';
+    const response = await myFetch(url);
+    return await response.json();
+}
+
 export async function checkRecharge(id,opt){
     const url = opt==='accept'?`http://111.231.120.224:3040/api/checkUserRecharge`:'http://111.231.120.224:3040/api/RejectUserRecharge';
     const body = JSON.stringify({
@@ -41,7 +60,11 @@ export async function getResources(){
     return await response.json();
 }
 
-
+export async function getResourceById(id){
+    const url = `http://111.231.120.224:3040/api/Service/${id}`;
+    const response = await myFetch(url);
+    return await response.json();
+}
 export async function getMyResources(userId){
     const filter = JSON.stringify({"where":{"user":`resource:token.User%23${userId}`}});
     console.log(filter);

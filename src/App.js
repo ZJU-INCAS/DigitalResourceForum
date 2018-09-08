@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Recharge from './containers/recharge';
-import Navigator from './components/navigation';
+import {PmNavigator,SmNavigator,UserNavigator} from './components/navigation';
 import Header from './components/header'
 import Issue from './containers/issue';
 import Account from './containers/account';
@@ -20,7 +20,8 @@ import Manage from './containers/manage';
 import Index from './containers/mainPage';
 import Check from './containers/check';
 import Resource from './containers/resource';
-import MyResource from './containers/myresource'
+import MyResource from './containers/myresource';
+import Users from './containers/users';
 class App extends Component {
   componentDidMount(){
     //测试用用户名
@@ -33,19 +34,24 @@ class App extends Component {
           <div>
               <Header />
               <div className="App">
-        <Navigator />
+        <Route path='/user' component={UserNavigator} />
+        <Route path='/pm' component={PmNavigator} />
+        <Route path='/sm' component={SmNavigator} />
                 <div id="mainBody">
                    <Route exact path='/' component={Index} />
-                   <Route path='/recharge' component={Recharge}/>
-                   <Route path='/issue' component={Issue} />
-                   <Route path='/account' component={Account} />
-                   <Route path='/transfer' component={Transfer} />
-                   <Route path='/withdraw' component={Withdraw} />
-                   <Route path='/list' component={List} />
-                   <Route path='/manage' component={Manage} />
-                   <Route path='/check' component={Check} />
-                   <Route path='/resource' component={Resource} />
-                   <Route path='/myresource' component={MyResource} />
+                   <Route exact path='/user' component={Index} />
+                   <Route exact path='/pm' component={Index} />
+                   <Route path='/user/recharge' component={Recharge}/>
+                   <Route path='/user/issue' component={Issue} />
+                   <Route path='/user/account' component={Account} />
+                   <Route path='/user/transfer' component={Transfer} />
+                   <Route path='/user/withdraw' component={Withdraw} />
+                   <Route path='/user/list' component={List} />
+                   <Route path='/pm/manage' component={Manage} />
+                   <Route path='/pm/check' component={Check} />
+                   <Route path='/pm/users' component={Users} />
+                   <Route path='/user/resource' component={Resource} />
+                   <Route path='/user/myresource' component={MyResource} />
                  </div>
             </div>
           </div>
