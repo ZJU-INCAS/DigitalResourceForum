@@ -5,13 +5,6 @@ import { List, Avatar, Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
 
 class RecordList extends React.Component {
-   state={data:[]}
-   componentDidMount(){
-    console.log(this.state.data);
-    console.log("==");
-    console.log(this.props.data);
-       this.setState({data:this.props.data});
-   }
     async confirm(item) {
         const response = await Utility.checkRecharge(item.tokenRechargeID, 'accept');
         if (response.status === 200) {
@@ -34,7 +27,7 @@ class RecordList extends React.Component {
 
         return <List
             itemLayout="horizontal"
-            dataSource={this.state.data}
+            dataSource={this.props.data}
             renderItem={item => (
                 <List.Item actions={this.props.mode !== 'dur' ? null : [<a onClick={this.confirm.bind(this, item)}>通过</a>, <a onClick={this.reject.bind(this, item)}>拒绝</a>]}>
                     <List.Item.Meta
