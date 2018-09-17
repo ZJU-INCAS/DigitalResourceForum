@@ -123,3 +123,13 @@ export async function consumeItem(userId,itemId){
       const response = await myFetch(url,{method:"POST",body});
       return response;
 }
+/**
+ * 
+ * @param {用户id} userId 
+ */
+export async function getUserRechargeRecords(userId){
+    const filter = JSON.stringify({"where":{"user":`resource:token.User%23${userId}`}});
+    const url = `http://111.231.120.224:3040/api/UserTokenRecharge?filter=${filter}`
+    const response = await myFetch(url);
+    return await response.json();
+}
